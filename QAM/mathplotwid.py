@@ -26,6 +26,25 @@ from matplotlib.ticker import MaxNLocator
 class MathPlotWid(QtWidgets.QWidget):
 
 
+    markes_chan = {0: 'o',
+              1: '^',
+              2: 'D',
+              3: 'X',
+              4: 's',
+              5: 'P',
+              6: '*'
+              }
+
+    colors_chan = {
+        0: 'b',
+        1: 'g',
+        2: 'r',
+        3: 'c',
+        4: 'm',
+        5: 'y',
+        6: 'b'
+
+    }
 
     def updateHistColors(self, data):
 
@@ -181,12 +200,29 @@ class MathPlotWid(QtWidgets.QWidget):
 
     def plotDiagSlot(self, data, amp_flg=False):
 
+        # очистка старых значений
+        """
         if self.scat:
-          self.scat.remove()
+            for _sc in self.scat:
+                _sc.remove()
+        """
+        self.scat = []
 
-        if self.cbar:
-            self.cbar.remove()
 
+        if amp_flg: # если отстраиваем амлитуду
+            pass
+        else: # ну а если подумать она не так уж нам и нужна
+
+            for _chans in data.getChans():
+                x = data.getArr('RAD', _chans, _np=True)
+                y = np.full([1, len(x)], 0.55)
+
+                self.scat.append(self.diag.scatter(x, y,marker=self.markes_chan[_chans], c=self.colors_chan[_chans]))
+
+        self.diag.set_ylim(0, 0.6)
+        self.figure.canvas.draw()
+
+        """
         if not amp_flg:
 
 
@@ -228,12 +264,14 @@ class MathPlotWid(QtWidgets.QWidget):
                 x.append(math.radians(data[i].DEG))
                 y.append(r)
 
+            #for i in range()
+
             self.scat = self.diag.scatter(x, y, c=self.colors, s=25, cmap=self.cmap)
 
 
 
-            self.diag.set_rmax(max(y) + 10)
-            self.diag.set_rmin(min(y) - 10)
+            self.diag.set_rmax(max(y) + 50)
+            self.diag.set_rmin(min(y) - 50)
 
             #self.diag.autoscale(axis='y')
             self.figure.canvas.draw()
@@ -243,7 +281,7 @@ class MathPlotWid(QtWidgets.QWidget):
             #self.cbar = self.figure.colorbar(self.scat)
             #plt.colorbar()
 
-
+    """
 
     def initDiagSlot(self, amp=False):
 
@@ -252,19 +290,13 @@ class MathPlotWid(QtWidgets.QWidget):
 
         if not amp:
 
-
-
             self.diag = self.figure.add_subplot(111, projection='polar')
-
             self.diag.invert_xaxis()
-
             self.diag.get_yaxis().set_visible(False)
             self.diag.set_ylim(0, 0.5)
-
             self.figure.subplots_adjust(left=0.058,
                                     right=0.945)
             self.diag.grid(True)
-
             self.figure.canvas.draw()
 
         if amp:
@@ -273,7 +305,6 @@ class MathPlotWid(QtWidgets.QWidget):
             self.figure.subplots_adjust(left=0.058,
                                         right=0.945)
             self.diag.grid(True)
-
             self.figure.canvas.draw()
 
 

@@ -1,5 +1,7 @@
 # ---- обработка исключений
 
+from structs import IQData_arr
+
 def log_uncaught_exceptions(ex_cls, ex, tb):
     text = '{}: {}:\n'.format(ex_cls.__name__, ex)
     import traceback
@@ -30,11 +32,18 @@ import time
 from mainwindow import Ui_MainWindow
 from FileReader import FileReader
 from structs import IQData
-
+from ThreadReader import ThreadReader
 
 # ----- класс формы
 
 class MW(QtWidgets.QMainWindow, Ui_MainWindow):
+
+    # -----
+
+
+
+    # -----
+
 
     def __init__(self):
         super(MW, self).__init__()
@@ -54,11 +63,22 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
         self.fr.plot_signal.connect(self.dataSlot)
         self.fr.end_signal.connect(self.endSlot)
         self.RD_stopFilePushButton.clicked.connect(self.fr.stop)
+
+
+
+        self.tr = ThreadReader()
+        self.tr.plot_signal.connect(self.dataSlot)
+        self.tr.end_signal.connect(self.endSlot)
+        self.tr.log_signal.connect(self.logSlot)
+        self.TR_stopFilePushButton.clicked.connect(self.tr.stop)
+
+
         # --- данные класса
 
         self.data = []
         self.data_len = self.clearSlider.value()
 
+        self.points_arr = IQData_arr()
 
         self.viePushButtonClicked()
         self.clearSliderValueChanged()
@@ -77,6 +97,7 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
     def initSignals(self):
+        self.TR_startFilePushButton.clicked.connect(self. TR_startFilePushButtonClicked)
         self.FR_ampCheckBox.stateChanged.connect(self.FR_ampCheckBoxstateChanged)
         self.setColorPushButton.clicked.connect(self.setColorPushButtonClicked)
         self.updateSlider.valueChanged.connect(self.updateSliderValueChanged)
@@ -161,6 +182,27 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
     def readFilePushButtonClicked(self):
         self.readFileLineEdit.setText(QFileDialog.getOpenFileName()[0])
 
+
+    def TR_startFilePushButtonClicked(self):
+        _tout = int(self.updateSlider.value())
+        _endian = self.endianComboBox.currentText()
+        _dll = 'pshow_get.dll'
+
+        self.logSlot('Запуск...')
+
+        self.tr.setParams(_dll, _endian,_tout)
+
+        ret = self.tr.connectDLL()
+
+        if ret:
+            self.showErr('Невозможно подключить DLL библиотеку!')
+            self.logSlot('Ошибка.')
+            return
+
+        self.tr.start()
+
+
+
     def RD_startFilePushButtonClicked(self):
 
         _tout = int(self.updateSlider.value())
@@ -196,6 +238,15 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def dataSlot(self, val):
 
+
+        self.points_arr.addPoints(val)
+        self.MPL_diag.plotDiagSlot(self.points_arr)
+
+
+
+        """
+        
+
         self.data.append(val)
 
         while len(self.data) > self.data_len:
@@ -213,6 +264,8 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
             self.MPL_diag.setDiagLables('Расположение точек', None, None)
         else:
             self.MPL_diag.setDiagLables('Расположение точек', 'Амплитуда', None)
+            
+        """
 
     def clearSlot(self):
         self.data = []

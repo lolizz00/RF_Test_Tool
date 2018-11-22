@@ -1,0 +1,9 @@
+﻿  dllmain.cpp
+  pshow_get.cpp
+h:\rf_test_tool\qam\dll\source\pshow_get\pshow_get.cpp(119): warning C4018: <: несоответствие типов со знаком и без знака
+h:\rf_test_tool\qam\dll\source\pshow_get\pshow_get.cpp(206): warning C4244: =: преобразование "volatile uint64_t" в "uint16_t", возможна потеря данных
+h:\rf_test_tool\qam\dll\source\pshow_get\pshow_get.cpp(251): warning C4018: <: несоответствие типов со знаком и без знака
+  stdafx.cpp
+  Создание кода...
+     Создается библиотека H:\RF_Test_Tool\QAM\dll\source\pshow_get\Debug\pshow_get.lib и объект H:\RF_Test_Tool\QAM\dll\source\pshow_get\Debug\pshow_get.exp
+  pshow_get.vcxproj -> H:\RF_Test_Tool\QAM\dll\source\pshow_get\Debug\pshow_get.dll

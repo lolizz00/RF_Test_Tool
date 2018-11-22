@@ -59,6 +59,7 @@ class ATT_Test(A_Test):
         self.writeToLog('Span:                      ' + str(self.span))
         self.writeToLog('Тип устройства:           ' + self.dev.type)
         self.writeToLog('Использование калибровки: ' + str(self.cal_flg))
+        self.writeToLog('Номинальное усиление:      ' + str(self.nominal_gain))
         self.writeToLog('_type:                    ' + 'ATT')
 
         if self.dev.type == 'Panorama':
@@ -138,6 +139,27 @@ class ATT_Test(A_Test):
             raise
         finally:
             self.progress_signal.emit(self.end)
+
+            try:  # пишем в лог данные
+
+                self.logfile.write('\n')
+                self.logfile.write('\n')
+
+                for i in range(len(self.plot[0].x)):
+                    self.logfile.write(str(self.plot[0].x[i]) + ' ')
+                    for j in range(len(self.plot)):  # бежим по графикам
+                        self.logfile.write(str(self.plot[j].y[0][i]) + ' ')
+                    self.logfile.write('\n')
+
+
+
+            except:
+                raise
+
+            try:
+                self.logfile.close()
+            except:
+                pass
 
             try:
                 self.gen.RFOutOFF()
