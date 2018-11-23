@@ -1,6 +1,0 @@
-﻿  pshow_test.cpp
-h:\rf_test_tool\qam\dll\source\pshow_test\pshow_test.cpp(27): warning C4018: <: несоответствие типов со знаком и без знака
-  stdafx.cpp
-  Создание кода...
-pshow_test.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) int __cdecl pshow_get(unsigned int *,int *,unsigned short *,unsigned int,unsigned int)" (__imp_?pshow_get@@YAHPAIPAHPAGII@Z) в функции _main
-H:\RF_Test_Tool\QAM\dll\source\pshow_test\Debug\pshow_test.exe : fatal error LNK1120: неразрешенных внешних элементов: 1

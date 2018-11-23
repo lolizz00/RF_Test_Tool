@@ -294,8 +294,7 @@ class MathPlotWid(QtWidgets.QWidget):
             self.diag.invert_xaxis()
             self.diag.get_yaxis().set_visible(False)
             self.diag.set_ylim(0, 0.5)
-            self.figure.subplots_adjust(left=0.058,
-                                    right=0.945)
+
             self.diag.grid(True)
             self.figure.canvas.draw()
 

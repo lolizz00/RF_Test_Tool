@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1371</width>
-    <height>755</height>
+    <width>1516</width>
+    <height>1012</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,27 +30,7 @@
      </size>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="MathPlotWid" name="MPL_diag">
-       <property name="minimumSize">
-        <size>
-         <width>450</width>
-         <height>0</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="MathPlotWid" name="MPL_hist">
-       <property name="minimumSize">
-        <size>
-         <width>450</width>
-         <height>0</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
+     <item row="1" column="2">
       <widget class="QGroupBox" name="controlGroupBox">
        <property name="minimumSize">
         <size>
@@ -127,7 +107,7 @@
              <item>
               <widget class="QSlider" name="updateSlider">
                <property name="minimum">
-                <number>50</number>
+                <number>100</number>
                </property>
                <property name="maximum">
                 <number>1000</number>
@@ -135,8 +115,11 @@
                <property name="singleStep">
                 <number>100</number>
                </property>
+               <property name="pageStep">
+                <number>100</number>
+               </property>
                <property name="value">
-                <number>700</number>
+                <number>500</number>
                </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
@@ -182,16 +165,19 @@
              <item>
               <widget class="QSlider" name="clearSlider">
                <property name="minimum">
-                <number>50</number>
+                <number>10</number>
                </property>
                <property name="maximum">
-                <number>500</number>
+                <number>1000</number>
                </property>
                <property name="singleStep">
                 <number>50</number>
                </property>
                <property name="pageStep">
                 <number>50</number>
+               </property>
+               <property name="value">
+                <number>300</number>
                </property>
                <property name="tracking">
                 <bool>true</bool>
@@ -259,7 +245,7 @@
             </size>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="page">
             <property name="geometry">
@@ -414,19 +400,6 @@
               </item>
              </layout>
             </widget>
-            <widget class="QCheckBox" name="FR_ampCheckBox">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>70</y>
-               <width>121</width>
-               <height>21</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Отобр. амплитуды</string>
-             </property>
-            </widget>
            </widget>
            <widget class="QWidget" name="page_2">
             <property name="geometry">
@@ -515,35 +488,6 @@
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="layoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>0</y>
-               <width>154</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_5">
-              <item>
-               <widget class="QLabel" name="label_4">
-                <property name="text">
-                 <string>Количество каналов:</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QSpinBox" name="TR_chanSpinBox">
-                <property name="minimum">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <number>5</number>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
            </widget>
           </widget>
          </item>
@@ -567,7 +511,7 @@
            <widget class="QPushButton" name="clearPushButton">
             <property name="geometry">
              <rect>
-              <x>140</x>
+              <x>260</x>
               <y>80</y>
               <width>75</width>
               <height>23</height>
@@ -688,6 +632,60 @@
              </item>
             </layout>
            </widget>
+           <widget class="QWidget" name="">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>60</y>
+              <width>201</width>
+              <height>51</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_20">
+             <item>
+              <widget class="QCheckBox" name="FR_ampCheckBox">
+               <property name="text">
+                <string>Отобр. амплитуды</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <item>
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>Номер канала:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="ampChanComboBox">
+                 <item>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>2</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>3</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
           </widget>
          </item>
          <item>
@@ -726,6 +724,14 @@
        </widget>
       </widget>
      </item>
+     <item row="1" column="0">
+      <widget class="MPL_Diag" name="diag" native="true">
+       <zorder>hist</zorder>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="MPL_Hist" name="hist" native="true"/>
+     </item>
     </layout>
    </widget>
   </widget>
@@ -734,7 +740,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1371</width>
+     <width>1516</width>
      <height>21</height>
     </rect>
    </property>
@@ -743,9 +749,16 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MathPlotWid</class>
-   <extends>QGraphicsView</extends>
-   <header>mathplotwid</header>
+   <class>MPL_Diag</class>
+   <extends>QWidget</extends>
+   <header>MPL_diag</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MPL_Hist</class>
+   <extends>QWidget</extends>
+   <header>MPL_hist</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

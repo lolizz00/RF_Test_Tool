@@ -25,12 +25,22 @@ class IQData_arr:
 
         return chans
 
+    def countbyRAD(self, _chan):
+
+        deg_arr = self.getArr('RAD', _chan, _np=True)
+
+        x, y = np.unique(deg_arr, return_counts=True)
+
+        return [x, y]
+
     #количество одинаковых точек по градусам
     def countbyDEG(self, _chan):
 
         deg_arr = self.getArr('DEG', _chan,_np=True)
 
         x, y = np.unique(deg_arr, return_counts=True)
+
+        return [x, y]
 
     # получение класс с только уникальными точками
     # по градусам+амлитудам и каналам

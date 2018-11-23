@@ -62,7 +62,8 @@ class ThreadReader(QThread):
         self.dll_ret_vals[-3] = 'PSHOW_ERR_NEW_SESSION'
         self.dll_ret_vals[-4] = 'PSHOW_ERR_BUFFER_TO_SMALL'
 
-
+    def setUpdateTime(self, val):
+        self.tout = val
 
     def setParams(self, _dll, _endian, _tout=None):
         self.file = _dll
@@ -182,6 +183,8 @@ class ThreadReader(QThread):
                             deg = (deg + 360) % 360
                             deg = round(deg)
 
+
+
                             points.append(IQData())
 
                             points[-1].chan = j
@@ -196,8 +199,11 @@ class ThreadReader(QThread):
                             math.sqrt( (points[-1].Q * points[-1].Q) +(points[-1].I * points[-1].I)) \
                                 )
 
-
-                    self.plot_signal.emit(points)
+                    if 1:  # отладка, что бы повторялась
+                        for i in range(random.randint(1, 5)):
+                            self.plot_signal.emit(points)
+                    else:
+                        self.plot_signal.emit(points)
 
                     if self.tout:
                         time.sleep(self.tout / 1000)

@@ -57,6 +57,9 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
         self.preInitPlots()
 
 
+        self.plot_flg = False
+        self.time = 0
+
         # ---
 
         self.fr = FileReader()
@@ -75,7 +78,6 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # --- данные класса
 
-        self.data = []
         self.data_len = self.clearSlider.value()
 
         self.points_arr = IQData_arr()
@@ -86,17 +88,46 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
         #self.showFullScreen()
 
 
+        # к-к-костыли!
+        #time.sleep(1)
+        self.hist.figure.tight_layout()
+
     def FR_ampCheckBoxstateChanged(self):
+
+        if self.FR_ampCheckBox.isChecked(): # с амлитудой
+            self.diag.setMode(True)
+            self.hist.setMode(True)
+            self.setLabels(True)
+
+
+            chan_n = int(self.ampChanComboBox.currentText())
+
+            self.hist.setChan(chan_n)
+            self.diag.setChan(chan_n)
+
+            self.viePushButtonClicked()
+
+        else:   # без нее не так уж и грустно
+            self.diag.setMode(False)
+            self.hist.setMode(False, 4)
+            self.setLabels(False)
+
+            self.viePushButtonClicked()
+
+        # --- old
+        """
         if self.FR_ampCheckBox.isChecked():
             self.MPL_diag.initDiagSlot(amp=True)
             self.MPL_diag.setDiagLables('Расположение точек', None, None)
         else:
             self.MPL_diag.initDiagSlot(amp=False)
             self.MPL_diag.setDiagLables('Расположение точек', 'I', 'Q')
-
+        """
 
 
     def initSignals(self):
+
+        self.ampChanComboBox.currentIndexChanged.connect(self.ampChanComboBoxCurrentIndexChanged)
         self.TR_startFilePushButton.clicked.connect(self. TR_startFilePushButtonClicked)
         self.FR_ampCheckBox.stateChanged.connect(self.FR_ampCheckBoxstateChanged)
         self.setColorPushButton.clicked.connect(self.setColorPushButtonClicked)
@@ -114,22 +145,61 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.logSlot('Успешно.')
 
+
+
+
+    def setLabels(self, mode=False, chan_n=0):
+        if not mode:
+            self.diag.setLabels('Расположение точек', None, None)
+
+            self.hist.setAllLabels(None, 'Коорд. точек', 'Кол-во точек')
+            for i in range(4):
+                self.hist.setLabels(i, title='Канал #' + str(i))
+        else:
+            self.diag.setLabels('Расположение точек', 'Амплитуда', None)
+            self.hist.setAllLabels('Канал #' + str(chan_n), 'Коорд. точек', 'Кол-во точек')
+
+
     def preInitPlots(self):
+        pass
+
+
+        self.diag.init()
+        self.diag.setMode(False)
+
+        self.hist.init(_count=4)
+        self.hist.setMode(False)
+
+        self.setLabels()
+
+        """
+        self.FR_ampCheckBox.setChecked(True)
+        self.FR_ampCheckBoxstateChanged()
+        self.FR_ampCheckBox.setChecked(False)
+        self.FR_ampCheckBoxstateChanged()
+        """
+        # --- old
 
         # ---- Инициализация гистограммы
 
-        self.MPL_hist.initHistSlot()
-        self.MPL_hist.setHistLables('Распределение кол-ва точек', 'Коорд. точек', 'Кол-во точек')
-        self.MPL_hist.enableGridHist(True)
+        #self.MPL_hist.initHistSlot()
+        #self.MPL_hist.setHistLables('Распределение кол-ва точек', 'Коорд. точек', 'Кол-во точек')
+        #self.MPL_hist.enableGridHist(True)
 
 
         # ----- Иницициализация кружочка
 
-        self.MPL_diag.initDiagSlot()
-        self.MPL_diag.setDiagLables('Расположение точек', None, None)
+        #self.MPL_diag.initDiagSlot()
+        #self.MPL_diag.setDiagLables('Расположение точек', None, None)
 
 
     # -----
+
+    def ampChanComboBoxCurrentIndexChanged(self):
+        chan_n = int(self.ampChanComboBox.currentText())
+
+        self.hist.setChan(chan_n)
+        self.diag.setChan(chan_n)
 
     def updateSliderValueChanged(self):
         self.updateLabel.setText(str(self.updateSlider.value()))
@@ -140,10 +210,11 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
     def clearPointPushButtonClicked(self):
 
         _tout = self.updateSlider.value()
-        val = int(self.clearSlider.value())
+        _len = int(self.clearSlider.value())
 
-        self.fr.setUpdateTime(_tout)
-        self.data_len = val
+        self.tr.setUpdateTime(_tout)
+        self.points_arr.setSize(_len)
+        #self.data_len = val
 
         self.logSlot('Успешно.')
 
@@ -173,10 +244,14 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
             self.showErr('Недопустимые значения!')
             return
 
-        self.MPL_hist.rangeHist(_min, _max)
-        self.MPL_diag.rangeDiag(_min, _max)
-        self.MPL_hist.rangeColor(_min, _max)
-        self.MPL_diag.rangeColor(_min, _max)
+
+        self.diag.setViev([_min, _max])
+        self.hist.setViev([_min, _max])
+
+        #self.MPL_hist.rangeHist(_min, _max)
+        #self.MPL_diag.rangeDiag(_min, _max)
+        #self.MPL_hist.rangeColor(_min, _max)
+        #self.MPL_diag.rangeColor(_min, _max)
         self.logSlot('Успешно.')
 
     def readFilePushButtonClicked(self):
@@ -184,13 +259,17 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
     def TR_startFilePushButtonClicked(self):
+
         _tout = int(self.updateSlider.value())
         _endian = self.endianComboBox.currentText()
         _dll = 'pshow_get.dll'
 
+
         self.logSlot('Запуск...')
 
         self.tr.setParams(_dll, _endian,_tout)
+
+        #self.points_arr.setSize(100)
 
         ret = self.tr.connectDLL()
 
@@ -238,9 +317,16 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def dataSlot(self, val):
 
-
         self.points_arr.addPoints(val)
-        self.MPL_diag.plotDiagSlot(self.points_arr)
+
+
+        if not self.plot_flg:
+            self.plot_flg = True
+            self.diag.plotDiag(self.points_arr)
+            self.hist.plotHist(self.points_arr)
+            self.plot_flg = False
+
+        #self.MPL_diag.plotDiagSlot(self.points_arr)
 
 
 
@@ -268,11 +354,7 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
         """
 
     def clearSlot(self):
-        self.data = []
-
-        self.logTextEdit.setText('')
-        self.MPL_hist.clearHistSlot()
-        self.MPL_diag.clearDiagSlot()
+        self.points_arr.clearPoints()
 
 
 
