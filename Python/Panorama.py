@@ -379,5 +379,5 @@ class Panorama:
 
     def setFreqReboot(self, val):
         ret = self.setFreq(val)
-        time.sleep(0.1)
+        time.sleep(0.3)
         return ret

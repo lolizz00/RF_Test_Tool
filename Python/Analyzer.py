@@ -278,7 +278,7 @@ class Analyzer:
                 ESRvalue = 0
 
                 while (ESRvalue & 1) == 0:
-                    time.sleep(0.2)
+                    time.sleep(0.1)
                     ESRvalue = int(self.hAnalyzer.query('*ESR?'))
 
 

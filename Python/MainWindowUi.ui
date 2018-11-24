@@ -482,7 +482,7 @@
             </size>
            </property>
            <property name="currentIndex">
-            <number>15</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="AFC_2">
             <attribute name="title">
@@ -723,6 +723,9 @@
               </item>
               <item row="3" column="0">
                <widget class="QCheckBox" name="AFC_bwCheckBox">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="text">
                  <string>Полоса пропускания</string>
                 </property>
@@ -755,6 +758,9 @@
               </item>
               <item row="4" column="0">
                <widget class="QCheckBox" name="AFC_noiseCheckBox">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="text">
                  <string>Бородатость</string>
                 </property>
@@ -4255,7 +4261,7 @@
                <x>20</x>
                <y>10</y>
                <width>341</width>
-               <height>71</height>
+               <height>74</height>
               </rect>
              </property>
              <layout class="QGridLayout" name="gridLayout_52">
@@ -4488,7 +4494,7 @@
             </size>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="page">
             <property name="geometry">
@@ -4565,7 +4571,7 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>C:/Users/User/Desktop</string>
+                 <string>C:/Users/User/Desktop/a</string>
                 </property>
                </widget>
               </item>
@@ -4664,8 +4670,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>100</width>
-              <height>30</height>
+              <width>571</width>
+              <height>177</height>
              </rect>
             </property>
             <attribute name="label">
@@ -4772,7 +4778,7 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>C:\HMC_res\</string>
+                 <string>C:/Users/User/Desktop/a</string>
                 </property>
                </widget>
               </item>
@@ -4802,7 +4808,7 @@
             </widget>
             <widget class="QPushButton" name="saveParamsPushButton">
              <property name="enabled">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
              <property name="geometry">
               <rect>

@@ -131,19 +131,24 @@ class AFC_Test(A_Test):
                 self.plot_flg = False
 
         if not self.bf:
-         self.an.setFreqSpan(10, 'MHz')
+         self.an.setFreqSpan(1, 'MHz')
          self.an.singleSweepMode()
+
+         self.an.traceClearWrite()
+         self.an.setTracAver(True)
+         self.an.singleSweepMode()
+         self.an.setSweep(20)
 
         else:
             self.an.setFreqSpan(int(self.user[4]), 'kHz')
             self.an.setTracAver(True)
             self.plot_flg = False
 
-
-
         self.an.setSweep(50, 'ms')
 
         if self.pan:
+            self.dev.setAtt(0)
+
             if self.dev.getLNA():
                 self.an.setRefLvl(self.level + 45, 'dBm')
             else:
@@ -168,7 +173,7 @@ class AFC_Test(A_Test):
 
         self.gen.RFOutON()
 
-        time.sleep(3)
+        time.sleep(1)
 
         try:
             while self.beg <= self.end:
@@ -191,7 +196,8 @@ class AFC_Test(A_Test):
                         self.dev.setFreqReboot(self.beg)
 
                 if not self.bf:
-                    self.an.beginMeas()
+                    self.an.averBeginMeas(3)
+                    self.an.waitEndCmd()
                 else:
                     time.sleep(8)
 
@@ -212,7 +218,8 @@ class AFC_Test(A_Test):
                     if not self.pan:
                         self.y.append(tmp - self.cal_out[round(self.beg)])
                     else:
-                        self.y.append(tmp - self.cal_out[750])
+                        self.y.append(round(tmp - self.cal_out[750], 2))
+                        #tmp = round(tmp, 1)
                 else:
                     self.y.append(tmp)
 
@@ -239,6 +246,7 @@ class AFC_Test(A_Test):
                 print('Error in AFC()')
         finally:
             self.gen.RFOutOFF()
+
 
             if self.bw:
                 maax = max(self.y)

@@ -1057,6 +1057,163 @@ class MW(QtGui.QMainWindow, Ui_MainWindow):
             if level and (not elem.tail or not elem.tail.strip()):
                 elem.tail = i
 
+    def saveParamsPushButtonClicked(self):  # сохранение параметров теста
+
+        file_name = self.saveFileLineEdit.text()
+        file_dir = self.fileDirLineEdit.text()
+        test_ind = self.testTabWidget.currentIndex()
+
+
+        file =  file_dir + '\\' + file_name + '.xml'
+
+
+        flg_not_exist = False # уже что то записано
+
+        try:
+            tree = et.parse(file)
+        except:
+            flg_not_exist = True
+
+        if flg_not_exist:
+            tree = et.Element('tests')
+        else:
+            tree = tree.getroot()
+
+
+        list_params = {}
+        test_name = ''
+
+        if test_ind == 0: # FR --- АЧХ
+
+            list_params['level'] = self.TST_AFC_levelLineEdit.text()
+            list_params['step'] = self.TST_AFC_stepLineEdit.text()
+            list_params['beg'] = self.TST_AFC_freqBeginLineEdit.text()
+            list_params['end'] = self.TST_AFC_freqEndLineEdit.text()
+
+            test_name = 'FR'
+
+        if test_ind == 1:  # GAIN --- Усиление
+
+            list_params['level'] = self.TST_GAIN_levelLineEdit.text()
+            list_params['step'] = self.TST_GAIN_stepFreqLineEdit.text()
+            list_params['beg'] = self.TST_GAIN_freqBeginLineEdit.text()
+            list_params['end'] = self.TST_GAIN_freqEndLineEdit.text()
+
+            test_name = 'GAIN'
+
+        if test_ind == 3: # PxdB
+
+            list_params['beg_l'] = self.TST_POC_levelBeginLineEdit.text()
+            list_params['end_l'] = self.TST_POC_levelEndLineEdit.text()
+            list_params['step_l'] = self.TST_POC_stepLevelLineEdit.text()
+            list_params['beg_f'] = self.TST_POC_freqBeginLineEdit.text()
+            list_params['end_f'] = self.TST_POC_freqEndLineEdit.text()
+            list_params['step_f'] = self.TST_POC_stepFreqLineEdit.text()
+            list_params['gain_file'] = self.POC_getInFileLineEdit.text()
+
+            test_name = 'PxdB'
+
+        if test_ind == 6: # пораженки --- BF
+            list_params['step'] = self.TST_BF_stepLineEdit.text()
+            list_params['beg'] = self.TST_BF_freqBeginLineEdit.text()
+            list_params['end'] = self.TST_BF_freqEndLineEdit.text()
+            list_params['span'] = self.TST_BF_spanLineEdit.text()
+            list_params['the'] = self.TST_BF_thresholdLineEdit.text()
+
+            test_name = 'BF'
+
+        if test_ind == 7:  # точность подстройки --- ACC
+            list_params['level'] = self.TST_ACC_levelLineEdit.text()
+            list_params['beg'] = self.TST_ACC_freqBeginLineEdit.text()
+            list_params['end'] = self.TST_ACC_freqEndLineEdit.text()
+
+            test_name = 'ACC'
+
+        if test_ind == 9:  #  гетеродины ---
+            list_params['beg']  = self.GET_beginLineEdit.text()
+            list_params['end']  = self.GET_endLineEdit.text()
+            list_params['step'] = self.GET_stepLineEdit.text()
+            list_params['in']   = str(self.GET_inCheckBox.isChecked())
+            list_params['out']  = str(self.GET_outCheckBox.isChecked())
+
+
+#            list_params[''] = self..text()
+
+            test_name = 'GET'
+        """
+        if test_ind ==:  # ---
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+
+            test_name = ''
+
+        if test_ind ==:  # ---
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+
+            test_name = ''
+
+        if test_ind ==:  # ---
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+
+            test_name = ''
+
+        if test_ind ==:  # ---
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+            list_params[''] = self..text()
+
+            test_name = ''
+        """
+
+
+
+
+        # --- сохраняем параметры в древо
+
+        mn = et.SubElement(tree, test_name)
+
+        for param, value in list_params.items():
+            child = et.SubElement(mn, param)
+            child.text = value
+
+        self.indent(tree)  # делаем отступы
+
+        # пишем дерево в файл, осталось дом построить
+
+        f_w = None
+
+        try:
+            f_w = open(file, 'w')
+            f_w.write(et.tostring(tree).decode("utf-8"))
+            f_w.write('\n')
+            f_w.close()
+        except:
+            self.logTextEditSlot('Ошибка в записи теста')
+            f_w.close()
+            return
+
+        self.logTextEditSlot('Успешно записано')
+
+    # --- old
+
+    """
     def saveParamsPushButtonClicked(self): # сохранение параметров теста
 
         fn = self.saveFileLineEdit.text()
@@ -1496,6 +1653,8 @@ class MW(QtGui.QMainWindow, Ui_MainWindow):
                 return
 
             self.logTextEditSlot('Успешно записан тест IMD')
+    
+    """
 
     def test(self):
 
@@ -1726,7 +1885,6 @@ class MW(QtGui.QMainWindow, Ui_MainWindow):
         #finally:
         file.close()
          #   return
-
 
     # ------------------------------------------------------------------
 
@@ -3565,7 +3723,7 @@ class MW(QtGui.QMainWindow, Ui_MainWindow):
         self.imd.start()
 
     def GAIN_func(self):
-        self.mainGraphicsView.plotItem.setLabels(title='Усиление', left='Усиление, dBm', bottom='Частота, MHz')
+        self.mainGraphicsView.plotItem.setLabels(title='Усиление', left='Усиление, dB', bottom='Частота, MHz')
 
         level = float(self.TST_GAIN_levelLineEdit.text())
         beg = float(self.TST_GAIN_freqBeginLineEdit.text())

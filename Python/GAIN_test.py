@@ -85,8 +85,8 @@ class GAIN_Test(A_Test):
                     self.an.setFreqCent(750, 'MHz')
                     self.dev.setFreqReboot(self.beg)
 
-                self.an.averBeginMeas(5)
-                time.sleep(0.05)
+                self.an.averBeginMeas(3)
+                self.an.waitEndCmd()
                 self.an.markerOneSetMax()
 
                 tmp = self.an.getMarkerOne()
@@ -100,6 +100,8 @@ class GAIN_Test(A_Test):
                         gain = (tmp - self.cal_out[round(self.beg)]) - self.level
                 else:
                     gain = tmp - self.level
+
+                gain = round(gain, 2)
 
                 self.y.append(gain)
 

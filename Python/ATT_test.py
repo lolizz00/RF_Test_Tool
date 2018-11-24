@@ -37,7 +37,7 @@ class ATT_Test(A_Test):
         self.an.traceClearWrite()
         self.an.setTracAver(True)
         self.an.singleSweepMode()
-        self.an.setFreqSpan(1, 'MHz')
+        self.an.setFreqSpan(10, 'MHz')
         self.an.setRefLvl(self.level + 30)
 
         # ---- настройка генератора
@@ -83,6 +83,7 @@ class ATT_Test(A_Test):
                 self.gen.setFreq(freq)
                 self.gen.setLevel(self.level - self.cal_in[freq], 'dBm')
                 time.sleep(0.1)
+
 
 
                 # работа с эталоном
