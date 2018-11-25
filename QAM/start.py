@@ -54,9 +54,8 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
         # -----
 
         self.initSignals()
-        self.preInitPlots()
 
-
+        self.chan_cnt = 0
         self.plot_flg = False
         self.time = 0
 
@@ -82,7 +81,7 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.points_arr = IQData_arr()
 
-        self.viePushButtonClicked()
+
         self.clearSliderValueChanged()
         self.updateSliderValueChanged()
         #self.showFullScreen()
@@ -92,44 +91,96 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
         #time.sleep(1)
         self.hist.figure.tight_layout()
 
-    def FR_ampCheckBoxstateChanged(self):
 
-        if self.FR_ampCheckBox.isChecked(): # с амлитудой
-            self.diag.setMode(True)
-            self.hist.setMode(True)
-            self.setLabels(True)
+        # --- режимы работы
+        self.mode = 0
+        self.updateMode()
+        self.viePushButtonClicked()
+        self.setColorPushButtonClicked()
+    def ishChanComboBoxStateChanged(self):
 
+        if self.mode == 2:
+            self.setLabels(self.mode)
 
+            # указываем нужный нам канал
             chan_n = int(self.ampChanComboBox.currentText())
+            self.hist.setChan(chan_n)
+            self.diag.setChan(chan_n)
+    def updateMode(self):
 
+        amp_flg = self.FR_ampCheckBox.isChecked()
+        delta_flg = self.TR_deltaCheckBox.isChecked()
+
+        if amp_flg: # отображение только амплитуды по выбранному каналу
+            self.mode = 3
+
+            # отключаем разницу каналов
+            #self.TR_deltaCheckBox.setEnabled(False)
+
+
+            #выставляем  режим
+            self.diag.setMode(self.mode)
+            self.hist.setMode(self.mode)
+
+            #указываем сколько нам нужно графиков на гистограмме
+            self.hist.setCount(1)
+
+            # выставляем писюльки
+            self.setLabels(self.mode)
+
+            #указываем нужный нам канал
+            chan_n = int(self.ampChanComboBox.currentText())
             self.hist.setChan(chan_n)
             self.diag.setChan(chan_n)
 
-            self.viePushButtonClicked()
-
-        else:   # без нее не так уж и грустно
-            self.diag.setMode(False)
-            self.hist.setMode(False, 4)
-            self.setLabels(False)
-
-            self.viePushButtonClicked()
-
-        # --- old
-        """
-        if self.FR_ampCheckBox.isChecked():
-            self.MPL_diag.initDiagSlot(amp=True)
-            self.MPL_diag.setDiagLables('Расположение точек', None, None)
         else:
-            self.MPL_diag.initDiagSlot(amp=False)
-            self.MPL_diag.setDiagLables('Расположение точек', 'I', 'Q')
-        """
+            #self.TR_deltaCheckBox.setEnabled(True)
+
+            if delta_flg:
+                self.mode = 2
+
+                self.diag.setMode(self.mode)
+                self.hist.setMode(self.mode)
+
+                self.hist.setCount(self.chan_cnt - 1)
+
+                self.diag.setChan(int(self.ishChanComboBox.currentText()))
+                self.hist.setChan(int(self.ishChanComboBox.currentText()))
+
+                self.setLabels(self.mode)
+
+            else:
+                self.mode = 1
+
+                self.diag.setMode(self.mode)
+                self.hist.setMode(self.mode)
+
+                self.hist.setCount(self.chan_cnt)
+
+                self.setLabels(self.mode)
+
+        self.viePushButtonClicked()
+
+
+
+
+
+
+    def TR_offsetCheckBoxStateChanged(self):
+        self.tr.setOffsFlag(self.TR_offsetCheckBox.isChecked())
+
 
 
     def initSignals(self):
 
+        self.ishChanComboBox.currentIndexChanged.connect(self.ishChanComboBoxStateChanged)
+        self.TR_offsetCheckBox.stateChanged.connect(self.TR_offsetCheckBoxStateChanged)
         self.ampChanComboBox.currentIndexChanged.connect(self.ampChanComboBoxCurrentIndexChanged)
         self.TR_startFilePushButton.clicked.connect(self. TR_startFilePushButtonClicked)
-        self.FR_ampCheckBox.stateChanged.connect(self.FR_ampCheckBoxstateChanged)
+
+        self.FR_ampCheckBox.stateChanged.connect(self.updateMode)
+        self.TR_deltaCheckBox.stateChanged.connect(self.updateMode)
+
         self.setColorPushButton.clicked.connect(self.setColorPushButtonClicked)
         self.updateSlider.valueChanged.connect(self.updateSliderValueChanged)
         self.clearSlider.valueChanged.connect(self.clearSliderValueChanged)
@@ -140,60 +191,45 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
         self.RD_startFilePushButton.clicked.connect(self.RD_startFilePushButtonClicked)
 
     def setColorPushButtonClicked(self):
-        self.MPL_diag.setCmap(self.colorComboBox.currentText())
-        self.MPL_hist.setCmap(self.colorComboBox.currentText())
+        self.diag.setCmap(self.colorComboBox.currentText())
+        self.hist.setCmap(self.colorComboBox.currentText())
 
         self.logSlot('Успешно.')
 
 
-
-
-    def setLabels(self, mode=False, chan_n=0):
-        if not mode:
+    def setLabels(self, mode=1):
+        if mode  == 1:
             self.diag.setLabels('Расположение точек', None, None)
 
             self.hist.setAllLabels(None, 'Коорд. точек', 'Кол-во точек')
-            for i in range(4):
+            for i in range(0, len(self.points_arr.getChans())):
                 self.hist.setLabels(i, title='Канал #' + str(i))
-        else:
+
+        elif mode == 2:
+
+            self.diag.setLabels('Расположение точек', None, None)
+
+            chan_n = int(self.ishChanComboBox.currentText())
+
+
+            sch = -1
+            self.hist.setAllLabels(None, 'Коорд. точек', 'Кол-во точек')
+            for i in range(0, len(self.points_arr.getChans())):
+                if i == chan_n:
+                    continue
+                else:
+                    sch = sch + 1
+                    self.hist.setLabels(sch, title='Разница канала #' + str(chan_n) + ' и #' + str(i))
+
+        elif mode == 3:
+            chan_n = int(self.ampChanComboBox.currentText())
             self.diag.setLabels('Расположение точек', 'Амплитуда', None)
+
             self.hist.setAllLabels('Канал #' + str(chan_n), 'Коорд. точек', 'Кол-во точек')
 
 
-    def preInitPlots(self):
-        pass
 
 
-        self.diag.init()
-        self.diag.setMode(False)
-
-        self.hist.init(_count=4)
-        self.hist.setMode(False)
-
-        self.setLabels()
-
-        """
-        self.FR_ampCheckBox.setChecked(True)
-        self.FR_ampCheckBoxstateChanged()
-        self.FR_ampCheckBox.setChecked(False)
-        self.FR_ampCheckBoxstateChanged()
-        """
-        # --- old
-
-        # ---- Инициализация гистограммы
-
-        #self.MPL_hist.initHistSlot()
-        #self.MPL_hist.setHistLables('Распределение кол-ва точек', 'Коорд. точек', 'Кол-во точек')
-        #self.MPL_hist.enableGridHist(True)
-
-
-        # ----- Иницициализация кружочка
-
-        #self.MPL_diag.initDiagSlot()
-        #self.MPL_diag.setDiagLables('Расположение точек', None, None)
-
-
-    # -----
 
     def ampChanComboBoxCurrentIndexChanged(self):
         chan_n = int(self.ampChanComboBox.currentText())
@@ -269,6 +305,8 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.tr.setParams(_dll, _endian,_tout)
 
+        self.clearPointPushButtonClicked()
+
         #self.points_arr.setSize(100)
 
         ret = self.tr.connectDLL()
@@ -319,6 +357,9 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.points_arr.addPoints(val)
 
+        if len(self.points_arr.getChans()) != self.chan_cnt:
+            self.chan_cnt =  len(self.points_arr.getChans())
+            self.updateMode()
 
         if not self.plot_flg:
             self.plot_flg = True
@@ -326,32 +367,6 @@ class MW(QtWidgets.QMainWindow, Ui_MainWindow):
             self.hist.plotHist(self.points_arr)
             self.plot_flg = False
 
-        #self.MPL_diag.plotDiagSlot(self.points_arr)
-
-
-
-        """
-        
-
-        self.data.append(val)
-
-        while len(self.data) > self.data_len:
-            self.data.pop(0)
-
-        _amp_flg = self.FR_ampCheckBox.isChecked()
-        #print(_amp_flg)
-
-        #self.MPL_diag.updateColors(self.data)
-
-        self.MPL_hist.plotHist(self.data)
-        self.MPL_diag.plotDiagSlot(self.data, amp_flg=_amp_flg)
-
-        if not _amp_flg:
-            self.MPL_diag.setDiagLables('Расположение точек', None, None)
-        else:
-            self.MPL_diag.setDiagLables('Расположение точек', 'Амплитуда', None)
-            
-        """
 
     def clearSlot(self):
         self.points_arr.clearPoints()

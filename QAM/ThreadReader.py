@@ -41,7 +41,7 @@ class ThreadReader(QThread):
         self.tout = None
 
 
-
+        self.offset_flg = False
 
         self.dll = None
 
@@ -116,6 +116,9 @@ class ThreadReader(QThread):
 
         return stream
 
+    def setOffsFlag(self, state):
+        self.offset_flg = state
+
     def run(self):
         self.stop_flg = False
         sch = 0
@@ -153,11 +156,22 @@ class ThreadReader(QThread):
 
                 if count > 0: # все окей
 
+
+                    # читаем смещение
+                    offset = []
+
+                   # print()
+
+                    if self.offset_flg:
+                        offset = [vals for vals in self.phase_add]
+                    else:
+                        offset = [0 * vals for vals in self.phase_add]
+
+                    #print(offset)
+
+
+
                     # --- конвертируем в поток битов
-
-
-
-
 
                     vals_stream = self.arrToStream(self.iq_buffer, (count * 2 * 2) * chan) #два значения по два байта
 
@@ -183,7 +197,7 @@ class ThreadReader(QThread):
                             deg = (deg + 360) % 360
                             deg = round(deg)
 
-
+                            deg = deg + offset[j]
 
                             points.append(IQData())
 
@@ -199,7 +213,7 @@ class ThreadReader(QThread):
                             math.sqrt( (points[-1].Q * points[-1].Q) +(points[-1].I * points[-1].I)) \
                                 )
 
-                    if 1:  # отладка, что бы повторялась
+                    if  1:  # отладка, что бы повторялась
                         for i in range(random.randint(1, 5)):
                             self.plot_signal.emit(points)
                     else:

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1516</width>
-    <height>1012</height>
+    <width>2198</width>
+    <height>1516</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,720 +17,803 @@
    <widget class="QWidget" name="cw" native="true">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>100</x>
+      <y>220</y>
       <width>1310</width>
-      <height>670</height>
+      <height>700</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>1310</width>
-      <height>670</height>
+      <width>1300</width>
+      <height>700</height>
      </size>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="1">
+      <widget class="MPL_Hist" name="hist" native="true"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="MPL_Diag" name="diag" native="true"/>
+     </item>
      <item row="1" column="2">
-      <widget class="QGroupBox" name="controlGroupBox">
+      <widget class="QGroupBox" name="groupBox_2">
        <property name="minimumSize">
         <size>
          <width>400</width>
-         <height>0</height>
+         <height>700</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>350</width>
-         <height>16777215</height>
+         <width>400</width>
+         <height>700</height>
         </size>
        </property>
        <property name="title">
-        <string>Настройки</string>
+        <string>Управление</string>
        </property>
-       <widget class="QWidget" name="layoutWidget">
+       <widget class="QToolBox" name="toolBox">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>20</x>
           <y>30</y>
-          <width>361</width>
-          <height>620</height>
+          <width>350</width>
+          <height>250</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QGroupBox" name="dataControlGroupBox">
-           <property name="minimumSize">
-            <size>
-             <width>350</width>
-             <height>150</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>350</width>
-             <height>150</height>
-            </size>
-           </property>
-           <property name="title">
-            <string>Управление данными</string>
-           </property>
-           <widget class="QPushButton" name="clearPointPushButton">
-            <property name="geometry">
-             <rect>
-              <x>150</x>
-              <y>110</y>
-              <width>75</width>
-              <height>23</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>Применить</string>
-            </property>
-           </widget>
-           <widget class="QWidget" name="layoutWidget">
-            <property name="geometry">
-             <rect>
-              <x>11</x>
-              <y>30</y>
-              <width>321</width>
-              <height>31</height>
-             </rect>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <item>
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Интервал обновления:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSlider" name="updateSlider">
-               <property name="minimum">
-                <number>100</number>
-               </property>
-               <property name="maximum">
-                <number>1000</number>
-               </property>
-               <property name="singleStep">
-                <number>100</number>
-               </property>
-               <property name="pageStep">
-                <number>100</number>
-               </property>
-               <property name="value">
-                <number>500</number>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="tickPosition">
-                <enum>QSlider::TicksBelow</enum>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="updateLabel">
-               <property name="text">
-                <string>50</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_2">
-               <property name="text">
-                <string>ms</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QWidget" name="layoutWidget">
-            <property name="geometry">
-             <rect>
-              <x>11</x>
-              <y>70</y>
-              <width>321</width>
-              <height>31</height>
-             </rect>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
-             <item>
-              <widget class="QLabel" name="label_3">
-               <property name="text">
-                <string>Кол-во точек на графике</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSlider" name="clearSlider">
-               <property name="minimum">
-                <number>10</number>
-               </property>
-               <property name="maximum">
-                <number>1000</number>
-               </property>
-               <property name="singleStep">
-                <number>50</number>
-               </property>
-               <property name="pageStep">
-                <number>50</number>
-               </property>
-               <property name="value">
-                <number>300</number>
-               </property>
-               <property name="tracking">
-                <bool>true</bool>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="invertedAppearance">
-                <bool>false</bool>
-               </property>
-               <property name="invertedControls">
-                <bool>false</bool>
-               </property>
-               <property name="tickPosition">
-                <enum>QSlider::TicksBelow</enum>
-               </property>
-               <property name="tickInterval">
-                <number>50</number>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="clearLabel">
-               <property name="text">
-                <string>50</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QComboBox" name="endianComboBox">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>110</y>
-              <width>84</width>
-              <height>20</height>
-             </rect>
-            </property>
-            <item>
+        <property name="minimumSize">
+         <size>
+          <width>350</width>
+          <height>250</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>450</width>
+          <height>250</height>
+         </size>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="page_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>350</width>
+           <height>169</height>
+          </rect>
+         </property>
+         <attribute name="label">
+          <string>Считывание</string>
+         </attribute>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label">
              <property name="text">
-              <string>Little Endian</string>
+              <string>Интервал обновления:</string>
              </property>
-            </item>
-            <item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="updateSlider">
+             <property name="minimum">
+              <number>100</number>
+             </property>
+             <property name="maximum">
+              <number>1000</number>
+             </property>
+             <property name="singleStep">
+              <number>100</number>
+             </property>
+             <property name="pageStep">
+              <number>100</number>
+             </property>
+             <property name="value">
+              <number>1000</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="tickPosition">
+              <enum>QSlider::TicksBelow</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="updateLabel">
              <property name="text">
-              <string>Big Endian</string>
+              <string>50</string>
              </property>
-            </item>
-           </widget>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolBox" name="readerToolBox">
-           <property name="minimumSize">
-            <size>
-             <width>350</width>
-             <height>150</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>350</width>
-             <height>150</height>
-            </size>
-           </property>
-           <property name="currentIndex">
-            <number>1</number>
-           </property>
-           <widget class="QWidget" name="page">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>0</y>
-              <width>350</width>
-              <height>96</height>
-             </rect>
-            </property>
-            <attribute name="label">
-             <string>Файл</string>
-            </attribute>
-            <widget class="QWidget" name="layoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>0</y>
-               <width>321</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout">
-              <item>
-               <widget class="QLabel" name="label_5">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Путь:</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="readFileLineEdit">
-                <property name="text">
-                 <string>H:/RF_Test_Tool/QAM/testdata/test_data_0.pcm</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="readFilePushButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
             </widget>
-            <widget class="QWidget" name="layoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>160</x>
-               <y>70</y>
-               <width>168</width>
-               <height>27</height>
-              </rect>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>ms</string>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_2">
-              <item>
-               <widget class="QPushButton" name="RD_startFilePushButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Старт</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="RD_stopFilePushButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Стоп</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
             </widget>
-            <widget class="QWidget" name="layoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>40</y>
-               <width>203</width>
-               <height>22</height>
-              </rect>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>50</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Кол-во точек на графике</string>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_8">
-              <item>
-               <widget class="QCheckBox" name="RD_emulateCheckBox">
-                <property name="text">
-                 <string>Эмуляция потока</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
             </widget>
-           </widget>
-           <widget class="QWidget" name="page_2">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>0</y>
-              <width>350</width>
-              <height>96</height>
-             </rect>
-            </property>
-            <attribute name="label">
-             <string>Поток</string>
-            </attribute>
-            <widget class="QCheckBox" name="TR_deltaCheckBox">
-             <property name="geometry">
-              <rect>
-               <x>200</x>
-               <y>0</y>
-               <width>141</width>
-               <height>21</height>
-              </rect>
+           </item>
+           <item>
+            <widget class="QSlider" name="clearSlider">
+             <property name="minimum">
+              <number>10</number>
+             </property>
+             <property name="maximum">
+              <number>1000</number>
+             </property>
+             <property name="singleStep">
+              <number>50</number>
+             </property>
+             <property name="pageStep">
+              <number>50</number>
+             </property>
+             <property name="value">
+              <number>10</number>
+             </property>
+             <property name="tracking">
+              <bool>true</bool>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="invertedAppearance">
+              <bool>false</bool>
+             </property>
+             <property name="invertedControls">
+              <bool>false</bool>
+             </property>
+             <property name="tickPosition">
+              <enum>QSlider::TicksBelow</enum>
+             </property>
+             <property name="tickInterval">
+              <number>50</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="clearLabel">
+             <property name="text">
+              <string>50</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QComboBox" name="endianComboBox">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>90</y>
+            <width>84</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <item>
+           <property name="text">
+            <string>Little Endian</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Big Endian</string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QPushButton" name="clearPointPushButton">
+          <property name="geometry">
+           <rect>
+            <x>210</x>
+            <y>90</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Применить</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_4">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>350</width>
+           <height>169</height>
+          </rect>
+         </property>
+         <attribute name="label">
+          <string>Графики</string>
+         </attribute>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>0</y>
+            <width>327</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="minimumSize">
+              <size>
+               <width>110</width>
+               <height>0</height>
+              </size>
              </property>
              <property name="text">
-              <string>Отображать разницу</string>
+              <string>Диапазон просмотра:</string>
              </property>
             </widget>
-            <widget class="QWidget" name="layoutWidget_2">
-             <property name="geometry">
-              <rect>
-               <x>160</x>
-               <y>70</y>
-               <width>168</width>
-               <height>27</height>
-              </rect>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="vieMinLineEdit">
+             <property name="text">
+              <string>0</string>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_7">
-              <item>
-               <widget class="QPushButton" name="TR_startFilePushButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Старт</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="TR_stopFilePushButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Стоп</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
             </widget>
-           </widget>
-          </widget>
-         </item>
-         <item>
-          <widget class="QGroupBox" name="plotControlGroupBox">
-           <property name="minimumSize">
-            <size>
-             <width>350</width>
-             <height>150</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>350</width>
-             <height>150</height>
-            </size>
-           </property>
-           <property name="title">
-            <string>Управлнение графиками</string>
-           </property>
-           <widget class="QPushButton" name="clearPushButton">
-            <property name="geometry">
-             <rect>
-              <x>260</x>
-              <y>80</y>
-              <width>75</width>
-              <height>23</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>Очистить</string>
-            </property>
-           </widget>
-           <widget class="QWidget" name="layoutWidget">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>20</y>
-              <width>327</width>
-              <height>31</height>
-             </rect>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_6">
+           </item>
+           <item>
+            <widget class="QLabel" name="label_7">
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>-</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="vieMaxLineEdit">
+             <property name="text">
+              <string>360</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="viePushButton">
+             <property name="text">
+              <string>Применить</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QPushButton" name="clearPushButton">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>70</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Очистить</string>
+          </property>
+         </widget>
+         <widget class="QWidget" name="">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>275</width>
+            <height>25</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <item>
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>Палитра цветов:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="colorComboBox">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>0</height>
+              </size>
+             </property>
              <item>
-              <widget class="QLabel" name="label_6">
-               <property name="minimumSize">
-                <size>
-                 <width>110</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Диапазон просмотра:</string>
-               </property>
-              </widget>
+              <property name="text">
+               <string>gist_rainbow</string>
+              </property>
              </item>
              <item>
-              <widget class="QLineEdit" name="vieMinLineEdit">
-               <property name="text">
-                <string>0</string>
-               </property>
-              </widget>
+              <property name="text">
+               <string>nipy_spectral</string>
+              </property>
              </item>
              <item>
-              <widget class="QLabel" name="label_7">
-               <property name="font">
-                <font>
-                 <pointsize>14</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>-</string>
-               </property>
-              </widget>
+              <property name="text">
+               <string>hsv</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="setColorPushButton">
+             <property name="text">
+              <string>Применить</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_5">
+         <attribute name="label">
+          <string>Отображение</string>
+         </attribute>
+         <widget class="QCheckBox" name="TR_deltaCheckBox">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>221</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Отображение разницы фаз на каналах</string>
+          </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget_4">
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>80</y>
+            <width>119</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>Канал отсчета:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="ishChanComboBox">
+             <item>
+              <property name="text">
+               <string>0</string>
+              </property>
              </item>
              <item>
-              <widget class="QLineEdit" name="vieMaxLineEdit">
-               <property name="text">
-                <string>360</string>
-               </property>
-              </widget>
+              <property name="text">
+               <string>1</string>
+              </property>
              </item>
              <item>
-              <widget class="QPushButton" name="viePushButton">
-               <property name="text">
-                <string>Применить</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QWidget" name="layoutWidget">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>110</y>
-              <width>275</width>
-              <height>25</height>
-             </rect>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_9">
-             <item>
-              <widget class="QLabel" name="label_8">
-               <property name="text">
-                <string>Палитра цветов:</string>
-               </property>
-              </widget>
+              <property name="text">
+               <string>2</string>
+              </property>
              </item>
              <item>
-              <widget class="QComboBox" name="colorComboBox">
-               <property name="minimumSize">
-                <size>
-                 <width>100</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <item>
-                <property name="text">
-                 <string>gist_rainbow</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>nipy_spectral</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>hsv</string>
-                </property>
-               </item>
-              </widget>
+              <property name="text">
+               <string>3</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QCheckBox" name="TR_offsetCheckBox">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>130</y>
+            <width>204</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Использовать начальнае смещение</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="FR_ampCheckBox">
+          <property name="geometry">
+           <rect>
+            <x>12</x>
+            <y>4</y>
+            <width>207</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Отображение амплитуды на канале</string>
+          </property>
+         </widget>
+         <widget class="QWidget" name="">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>30</y>
+            <width>210</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="minimumSize">
+              <size>
+               <width>170</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Номер отображаемого канала:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="ampChanComboBox">
+             <item>
+              <property name="text">
+               <string>0</string>
+              </property>
              </item>
              <item>
-              <widget class="QPushButton" name="setColorPushButton">
-               <property name="text">
-                <string>Применить</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QWidget" name="">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>60</y>
-              <width>201</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_20">
-             <item>
-              <widget class="QCheckBox" name="FR_ampCheckBox">
-               <property name="text">
-                <string>Отобр. амплитуды</string>
-               </property>
-              </widget>
+              <property name="text">
+               <string>1</string>
+              </property>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_5">
-               <item>
-                <widget class="QLabel" name="label_4">
-                 <property name="text">
-                  <string>Номер канала:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="ampChanComboBox">
-                 <item>
-                  <property name="text">
-                   <string>0</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>1</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>2</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>3</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-              </layout>
+              <property name="text">
+               <string>2</string>
+              </property>
              </item>
-            </layout>
-           </widget>
-          </widget>
-         </item>
-         <item>
-          <widget class="QGroupBox" name="groupBox">
-           <property name="minimumSize">
-            <size>
-             <width>350</width>
-             <height>150</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>350</width>
-             <height>150</height>
-            </size>
-           </property>
-           <property name="title">
-            <string>Лог</string>
-           </property>
-           <widget class="QTextEdit" name="logTextEdit">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>20</y>
-              <width>320</width>
-              <height>120</height>
-             </rect>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </widget>
-         </item>
-        </layout>
+             <item>
+              <property name="text">
+               <string>3</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QToolBox" name="readerToolBox">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>290</y>
+          <width>350</width>
+          <height>150</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>350</width>
+          <height>150</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>350</width>
+          <height>150</height>
+         </size>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="page">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>350</width>
+           <height>96</height>
+          </rect>
+         </property>
+         <attribute name="label">
+          <string>Файл</string>
+         </attribute>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>0</y>
+            <width>331</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Путь:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="readFileLineEdit">
+             <property name="text">
+              <string>H:/RF_Test_Tool/QAM/testdata/test_data_0.pcm</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="readFilePushButton">
+             <property name="minimumSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>...</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>160</x>
+            <y>60</y>
+            <width>168</width>
+            <height>27</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="RD_startFilePushButton">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Старт</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="RD_stopFilePushButton">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Стоп</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>203</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QCheckBox" name="RD_emulateCheckBox">
+             <property name="text">
+              <string>Эмуляция потока</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>350</width>
+           <height>96</height>
+          </rect>
+         </property>
+         <attribute name="label">
+          <string>Поток</string>
+         </attribute>
+         <widget class="QWidget" name="layoutWidget_2">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>30</y>
+            <width>168</width>
+            <height>27</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QPushButton" name="TR_startFilePushButton">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Старт</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="TR_stopFilePushButton">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Стоп</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>450</y>
+          <width>350</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>350</width>
+          <height>150</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>350</width>
+          <height>300</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>Лог</string>
+        </property>
+        <widget class="QTextEdit" name="logTextEdit">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>331</width>
+           <height>201</height>
+          </rect>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
        </widget>
       </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="MPL_Diag" name="diag" native="true">
-       <zorder>hist</zorder>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="MPL_Hist" name="hist" native="true"/>
      </item>
     </layout>
    </widget>
@@ -740,7 +823,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1516</width>
+     <width>2198</width>
      <height>21</height>
     </rect>
    </property>

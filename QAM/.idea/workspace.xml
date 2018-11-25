@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/start.py" line="371" />
-    <bookmark url="file://$PROJECT_DIR$/mathplotwid.py" line="238" />
+    <bookmark url="file://$PROJECT_DIR$/start.py" line="386" />
+    <bookmark url="file://$PROJECT_DIR$/mathplotwid.py" line="367" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="535646f7-81ee-46c0-b5c6-e2a0da13292d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Python/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Python/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MPL_diag.py" beforeDir="false" afterPath="$PROJECT_DIR$/MPL_diag.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MPL_hist.py" beforeDir="false" afterPath="$PROJECT_DIR$/MPL_hist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ThreadReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/ThreadReader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainwindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mainwindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/structs.py" beforeDir="false" afterPath="$PROJECT_DIR$/structs.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +25,7 @@
     <session id="-755192798">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.0" value="6" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
@@ -27,57 +33,42 @@
           <entry key="project.open.time.25" value="3" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.39" value="1" />
-          <entry key="project.opened" value="16" />
+          <entry key="project.opened" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="38" />
+          <entry key="py" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="38" />
+          <entry key="Python" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="24327" />
+          <entry key="py" value="27392" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="24327" />
+          <entry key="Python" value="27392" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.45704162">
+    <splitter split-orientation="horizontal" split-proportion="0.53857565">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/mainwindow.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="5763">
-                  <caret line="339" column="16" selection-start-line="339" selection-start-column="16" selection-end-line="339" selection-end-column="16" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ThreadReader.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="33" column="10" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="10" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                    <marker date="1542994118618" expanded="true" signature="1627:1636" ph="..." />
-                    <marker date="1542994118618" expanded="true" signature="1782:1801" ph="..." />
-                    <marker date="1542994118618" expanded="true" signature="1822:2632" ph="..." />
-                    <marker date="1542994118618" expanded="true" signature="2505:2632" ph="..." />
-                  </folding>
+                <state relative-caret-position="389">
+                  <caret line="367" selection-start-line="367" selection-end-line="367" />
                 </state>
               </provider>
             </entry>
@@ -86,9 +77,13 @@
             <entry file="file://$PROJECT_DIR$/start.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="248">
-                  <caret line="346" column="18" lean-forward="true" selection-start-line="346" selection-start-column="18" selection-end-line="346" selection-end-column="18" />
+                  <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
                   <folding>
-                    <marker date="1542996162876" expanded="true" signature="4095:4538" ph="..." />
+                    <marker date="1543179103451" expanded="true" signature="2151:2161" ph="..." />
+                    <marker date="1543179103451" expanded="true" signature="2179:2401" ph="..." />
+                    <marker date="1543179103451" expanded="true" signature="2422:3924" ph="..." />
+                    <marker date="1543179103451" expanded="true" signature="3924:3932" ph="..." />
+                    <marker date="1543179103451" expanded="true" signature="3972:4038" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -98,10 +93,7 @@
             <entry file="file://$PROJECT_DIR$/FileReader.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="544">
-                  <caret line="41" column="23" selection-start-line="40" selection-start-column="3" selection-end-line="41" selection-end-column="23" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
+                  <caret line="42" selection-start-line="42" selection-end-line="42" />
                 </state>
               </provider>
             </entry>
@@ -109,40 +101,40 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/structs.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1445">
-                  <caret line="86" column="25" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
+                <state relative-caret-position="85">
+                  <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
                   <folding>
-                    <element signature="e#35#53#0" expanded="true" />
-                    <marker date="1542987895974" expanded="true" signature="120:2577" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="345:656" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="729:867" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="980:1035" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="1137:1190" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="1137:1228" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="1269:1853" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="1873:1915" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="1965:1997" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="2044:2419" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="2172:2253" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="2278:2375" ph="..." />
-                    <marker date="1542987895974" expanded="true" signature="2759:2764" ph="..." />
+                    <marker date="1543173866297" expanded="true" signature="336:368" ph="..." />
+                    <marker date="1543173866297" expanded="true" signature="1113:1118" ph="..." />
+                    <marker date="1543173866297" expanded="true" signature="1269:1274" ph="..." />
+                    <marker date="1543173866297" expanded="true" signature="1329:1334" ph="..." />
+                    <marker date="1543173866297" expanded="true" signature="1329:1722" ph="..." />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/MPL_hist.py">
+            <entry file="file://$PROJECT_DIR$/MPL_diag.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3196">
-                  <caret line="206" column="18" selection-start-line="206" selection-start-column="13" selection-end-line="206" selection-end-column="18" />
+                <state relative-caret-position="68">
+                  <caret line="223" column="48" lean-forward="true" selection-start-line="223" selection-start-column="48" selection-end-line="223" selection-end-column="48" />
                   <folding>
                     <element signature="e#0#42#0" expanded="true" />
-                    <marker date="1542993336342" expanded="true" signature="921:1902" ph="..." />
-                    <marker date="1542993336342" expanded="true" signature="2329:2576" ph="..." />
-                    <marker date="1542993336342" expanded="true" signature="2636:2935" ph="..." />
-                    <marker date="1542993336342" expanded="true" signature="3435:3440" ph="..." />
-                    <marker date="1542993336342" expanded="true" signature="3435:4043" ph="..." />
+                    <marker date="1543165886653" expanded="true" signature="950:1227" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/ThreadReader.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="262">
+                  <caret line="224" column="34" lean-forward="true" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                    <marker date="1543178774320" expanded="true" signature="2692:2730" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -153,12 +145,14 @@
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/MPL_diag.py">
+            <entry file="file://$PROJECT_DIR$/MPL_hist.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="277">
-                  <caret line="137" selection-start-line="137" selection-end-line="137" />
+                <state relative-caret-position="136">
+                  <caret line="151" column="15" selection-start-line="151" selection-start-column="8" selection-end-line="151" selection-end-column="15" />
                   <folding>
                     <element signature="e#0#42#0" expanded="true" />
+                    <marker date="1543173794713" expanded="true" signature="3954:4344" ph="..." />
+                    <marker date="1543173794713" expanded="true" signature="4040:4050" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -178,49 +172,49 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>viePushButton</find>
-      <find>mode</find>
-      <find>setMode</find>
-      <find>inu</find>
-      <find>FR_ampCheckBox</find>
-      <find>se</find>
-      <find>setLbas</find>
-      <find>def __</find>
-      <find>init</find>
-      <find>plotDiag</find>
+      <find>g</find>
+      <find>len</find>
+      <find>upda</find>
+      <find>updateCol</find>
+      <find>count</find>
+      <find>== 2</find>
+      <find>uniq</find>
+      <find>del</find>
+      <find>updateMode</find>
+      <find>l</find>
+      <find>self.po</find>
+      <find>.pop</find>
+      <find>vie</find>
       <find>x_lim</find>
-      <find>ampC</find>
-      <find>def clearPointPushButton</find>
-      <find>def __init</find>
-      <find>preInit</find>
-      <find>chan_n</find>
-      <find>_tout</find>
-      <find>tout</find>
-      <find>__</find>
-      <find>tight</find>
+      <find>setViev</find>
+      <find>init</find>
+      <find>setmode</find>
+      <find>def updateMode</find>
+      <find>s=</find>
+      <find>self.bar_w</find>
+      <find>setMod</find>
+      <find>clear</find>
+      <find>plot</find>
+      <find>wid</find>
+      <find>ishChanComboBox</find>
+      <find>signa</find>
+      <find>print</find>
+      <find>plotDiag</find>
+      <find>setCmap</find>
       <find>__init</find>
-      <find>setLabe</find>
-      <find>_init</find>
-      <find>self.plot</find>
-      <find>time.</find>
-      <find>time</find>
-      <find>dataSlot</find>
-      <find>TR_startFilePushButton</find>
-      <find>self.poin</find>
-      <find>self.points_ar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/FileReader.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/MPL_diag.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/start.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/MPL_hist.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/FileReader.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/structs.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/mathplotwid.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/start.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/ThreadReader.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/MPL_hist.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -230,19 +224,19 @@
         <option value="$PROJECT_DIR$/FileReader.py" />
         <option value="$PROJECT_DIR$/MPL_Diag.py" />
         <option value="$PROJECT_DIR$/mathplotwid.py" />
+        <option value="$PROJECT_DIR$/MPL_diag.py" />
         <option value="$PROJECT_DIR$/structs.py" />
         <option value="$PROJECT_DIR$/MPL_hist.py" />
-        <option value="$PROJECT_DIR$/MPL_diag.py" />
         <option value="$PROJECT_DIR$/ThreadReader.py" />
         <option value="$PROJECT_DIR$/start.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -319,15 +313,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1512118" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.15059347" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27982646" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.20390455" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.352459" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.21100917" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -339,6 +333,25 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15059347" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.21100917" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -348,8 +361,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/mathplotwid.py</url>
-          <line>211</line>
+          <line>357</line>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/structs.py</url>
+          <line>84</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MPL_hist.py</url>
+          <line>190</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -404,79 +427,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mainwindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5763">
-          <caret line="339" column="16" selection-start-line="339" selection-start-column="16" selection-end-line="339" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThreadReader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="33" column="10" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <marker date="1542994118618" expanded="true" signature="1627:1636" ph="..." />
-            <marker date="1542994118618" expanded="true" signature="1782:1801" ph="..." />
-            <marker date="1542994118618" expanded="true" signature="1822:2632" ph="..." />
-            <marker date="1542994118618" expanded="true" signature="2505:2632" ph="..." />
-          </folding>
+        <state relative-caret-position="389">
+          <caret line="367" selection-start-line="367" selection-end-line="367" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FileReader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
-          <caret line="41" column="23" selection-start-line="40" selection-start-column="3" selection-end-line="41" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/structs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="86" column="25" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
+        <state relative-caret-position="85">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           <folding>
-            <element signature="e#35#53#0" expanded="true" />
-            <marker date="1542987895974" expanded="true" signature="120:2577" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="345:656" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="729:867" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="980:1035" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="1137:1190" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="1137:1228" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="1269:1853" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="1873:1915" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="1965:1997" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="2044:2419" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="2172:2253" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="2278:2375" ph="..." />
-            <marker date="1542987895974" expanded="true" signature="2759:2764" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MPL_hist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3196">
-          <caret line="206" column="18" selection-start-line="206" selection-start-column="13" selection-end-line="206" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-            <marker date="1542993336342" expanded="true" signature="921:1902" ph="..." />
-            <marker date="1542993336342" expanded="true" signature="2329:2576" ph="..." />
-            <marker date="1542993336342" expanded="true" signature="2636:2935" ph="..." />
-            <marker date="1542993336342" expanded="true" signature="3435:3440" ph="..." />
-            <marker date="1542993336342" expanded="true" signature="3435:4043" ph="..." />
+            <marker date="1543173866297" expanded="true" signature="336:368" ph="..." />
+            <marker date="1543173866297" expanded="true" signature="1113:1118" ph="..." />
+            <marker date="1543173866297" expanded="true" signature="1269:1274" ph="..." />
+            <marker date="1543173866297" expanded="true" signature="1329:1334" ph="..." />
+            <marker date="1543173866297" expanded="true" signature="1329:1722" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MPL_diag.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="137" selection-start-line="137" selection-end-line="137" />
+        <state relative-caret-position="68">
+          <caret line="223" column="48" lean-forward="true" selection-start-line="223" selection-start-column="48" selection-end-line="223" selection-end-column="48" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
+            <marker date="1543165886653" expanded="true" signature="950:1227" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThreadReader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="224" column="34" lean-forward="true" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1543178774320" expanded="true" signature="2692:2730" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MPL_hist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="151" column="15" selection-start-line="151" selection-start-column="8" selection-end-line="151" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+            <marker date="1543173794713" expanded="true" signature="3954:4344" ph="..." />
+            <marker date="1543173794713" expanded="true" signature="4040:4050" ph="..." />
           </folding>
         </state>
       </provider>
@@ -484,9 +490,13 @@
     <entry file="file://$PROJECT_DIR$/start.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
-          <caret line="346" column="18" lean-forward="true" selection-start-line="346" selection-start-column="18" selection-end-line="346" selection-end-column="18" />
+          <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
           <folding>
-            <marker date="1542996162876" expanded="true" signature="4095:4538" ph="..." />
+            <marker date="1543179103451" expanded="true" signature="2151:2161" ph="..." />
+            <marker date="1543179103451" expanded="true" signature="2179:2401" ph="..." />
+            <marker date="1543179103451" expanded="true" signature="2422:3924" ph="..." />
+            <marker date="1543179103451" expanded="true" signature="3924:3932" ph="..." />
+            <marker date="1543179103451" expanded="true" signature="3972:4038" ph="..." />
           </folding>
         </state>
       </provider>

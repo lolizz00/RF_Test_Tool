@@ -60,7 +60,7 @@ class MPL_Hist(QtWidgets.QWidget):
         self.hists = []                  # набор гистограмм
         self.bars_plots = []             # набор данных
         self.mode = False
-        self.bar_width =  2
+        self.bar_width =  3
 
         self.count = 0                   # количество графиков
 
@@ -68,20 +68,13 @@ class MPL_Hist(QtWidgets.QWidget):
         self.x_lim = []
 
         # ---
+        self.init(1)
         self.figure.canvas.draw()
 
     # mode == False --- отображение амплитуды вылючено
     # mode == True  --- отображение амплитуды вкключено
-    def setMode(self,_mode=False, _count=None):
-
-        if self.mode != _mode: # если перещелкиваемся
-            if _mode:
-                self.init(_count=1)
-            else:
-                self.init(_count)
-
-            self.mode = _mode
-
+    def setCount(self, _count):
+        self.init(_count)
 
     def setLabels(self,n_chan, title=None, xlabel=None, ylabel=None):
         if title:
@@ -117,14 +110,16 @@ class MPL_Hist(QtWidgets.QWidget):
 
         self.hists = []
 
-        self.hists = self.figure.subplots(self.count)
 
-        if _count == 1:
-            self.hists = [self.hists]
+        if self.count > 0:
+            self.hists = self.figure.subplots(self.count)
 
-        for _hist in self.hists:
-            _hist.yaxis.set_major_locator(MaxNLocator(integer=True))
-            _hist.grid(True)
+            if _count == 1:
+                self.hists = [self.hists]
+
+            for _hist in self.hists:
+                _hist.yaxis.set_major_locator(MaxNLocator(integer=True))
+                _hist.grid(True)
 
 
         self.figure.canvas.draw()
@@ -163,39 +158,60 @@ class MPL_Hist(QtWidgets.QWidget):
 
     # ---
 
+    def setMode(self, _mode):
+        self.mode = _mode
+        self.clear()
+
+    def updateColorsDelta(self, arr):
+
+        a, b = np.unique(arr, return_counts=True)
+
+        dic = dict(zip(a, b))
+
+        self.normalize = matplotlib.colors.Normalize(vmin=np.min(b)
+                                                     , vmax=np.max(b))
+
+        self.colors = [self.cmap(self.normalize(dic[val])) for val in arr]
+
     def plotHist(self, data, _chan=None):
 
+        self.clear()
 
-         self.clear()
-
-         if not self.mode: # работаем со всеми каналами
-
-            for _chan in data.getChans():  # бежим по списку каналов
+        if self.mode == 1:
+            for _chan in data.getChans():
                 x, y = data.countbyDEG(_chan)
 
-
-                # цветоканалы
-                #_plot =  self.hists[_chan].bar(x, y, width=self.bar_width, color=self.colors_chan[_chan])
-
-                #цветоколичества
                 self.updateColors(data, _chan)
                 _plot = self.hists[_chan].bar(x, y, width=self.bar_width, color=self.colors)
 
-
                 self.bars_plots.append(_plot)
-         else:
+        elif self.mode == 2:
+            sch = -1
+
+            for i in range(len(data.getChans())):
+                if i == self.amp_chan_n:
+                    continue
+                else:
+                    sch = sch + 1
+
+                    x = data.getDeltaArr('DEG', self.amp_chan_n, i)
+
+                    y =  np.unique(x, return_counts=True)[1]
+
+                    self.updateColorsDelta(x)
+                    _plot = self.hists[sch].bar(x, y, width=self.bar_width, color=self.colors)
+
+                    self.bars_plots.append(_plot)
+
+        elif self.mode == 3:
             x, y = data.countbyDEG(self.amp_chan_n)
 
-            # цветоканалы
-            # _plot =  self.hists[0].bar(x, y, width=self.bar_width, color=self.colors_chan[_chan])
-
-            # цветоколичества
             self.updateColors(data, self.amp_chan_n)
             _plot = self.hists[0].bar(x, y, width=self.bar_width, color=self.colors)
 
             self.bars_plots.append(_plot)
 
-         self.figure.canvas.draw()
+        self.figure.canvas.draw()
 
 
     # для работы с ампли туду-туду-туду ой

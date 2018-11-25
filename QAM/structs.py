@@ -7,12 +7,16 @@ class IQData_arr:
     def __init__(self, _size=50):
         self.points = []
         self.size = _size
+        self.offset = []
+
 
         self.updateLen()
 
     def __len__(self):
         return self.len
 
+    def setOffset(self, arr):
+        self.offset = arr
 
     # получаем номера доступных каналов
     def getChans(self):
@@ -51,12 +55,36 @@ class IQData_arr:
         return tmp
 
 
+
     # получение класс с только уникальными точками
     # по градусам и каналам
-    def getUniqDEG(self, ):
+    def getUniqDEG(self ):
         tmp = IQData_arr()
 
         return tmp
+
+
+
+    def getDeltaArr(self,type, chan0, chan1):
+
+        try:
+            arr_chan0_x =  self.getArr(type, chan0, _np=True)
+            arr_chan1_x =  self.getArr(type, chan1, _np=True)
+
+            ret = arr_chan0_x - arr_chan1_x
+        except:
+            ret = []
+
+        if type == 'DEG':
+            for i in range(len(ret)):
+                if ret[i] < 0:
+                    ret[i] = 360 + ret[i]
+
+
+
+        #print(ret)
+
+        return ret
 
     # получение массивов для графиков
     def getArr(self, type, _chan, _np=False):
@@ -95,7 +123,9 @@ class IQData_arr:
     #у нас тут вообще то очередь, молодой человек!
     def changeLen(self):
         while len(self.points) > self.size:
-            self.points.pop(0)
+            for i in range(len(self.getChans())):
+                self.points.pop(0)
+
 
     def addPoints(self, pts):
         self.points = self.points + pts

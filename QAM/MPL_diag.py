@@ -34,6 +34,17 @@ class MPL_Diag(QtWidgets.QWidget):
 
     }
 
+    def setMode(self, _mode):
+        self.mode = _mode
+        self.clear()
+
+        if self.mode == 1:
+            self.diag.get_yaxis().set_visible(False)
+            self.diag.set_ylim(self.y_lim[0], self.y_lim[1])
+
+        elif self.mode == 3:
+            self.diag.get_yaxis().set_visible(True)
+
     def __init__(self, parent=None):
         super(MPL_Diag, self).__init__(parent)
 
@@ -61,12 +72,14 @@ class MPL_Diag(QtWidgets.QWidget):
 
         self.diag = None # сама диаграма
         self.diag_plots = None # данные диаграммы
-        self.mode = False # ампл / без ампл
+        self.mode = 0 # ампл / без ампл
         self.y_lim = [0, 30] # min max без амплитуды
         self.x_lim = []
         self.mrk_size = 10 # размер точки
+        self.delta_flg = False
 
         # ---
+        self.init()
         self.figure.canvas.draw()
 
 
@@ -75,17 +88,7 @@ class MPL_Diag(QtWidgets.QWidget):
 
     # mode == False --- отображение амплитуды вылючено
     # mode == True  --- отображение амплитуды вкключено
-    def setMode(self, _mode=False):
 
-        self.mode = _mode
-
-        if not _mode:
-            self.diag.get_yaxis().set_visible(False)
-            self.diag.set_ylim(self.y_lim[0], self.y_lim[1])
-        else:
-            self.diag.get_yaxis().set_visible(True)
-
-        self.figure.canvas.draw()
 
     #первоначальная инициализация
     def init(self):
@@ -139,6 +142,19 @@ class MPL_Diag(QtWidgets.QWidget):
         self.cmap_type = name
         self.cmap = matplotlib.cm.get_cmap(self.cmap_type)
 
+
+    def updateColorsDelta(self, arr):
+
+        a, b = np.unique(arr, return_counts=True)
+
+        dic = dict(zip(a, b))
+
+        self.normalize = matplotlib.colors.Normalize(vmin=np.min(b)
+                                                     , vmax=np.max(b))
+
+        self.colors = [self.cmap(self.normalize(dic[val])) for val in arr]
+
+
     # формируем палитру цветов
     def updateColors(self, data, chan_n):
 
@@ -165,47 +181,64 @@ class MPL_Diag(QtWidgets.QWidget):
 
         self.figure.canvas.draw()
 
+
     def plotDiag(self, data):
 
         self.clear()
 
-        if not self.mode: # ну а если подумать она не так уж нам и нужна
+        if self.mode   == 1:
+            for _chans in data.getChans():  # бежим по списку каналов
+                x = data.getArr('RAD', _chans, _np=True)  # получаем  данные
 
-
-            for _chans in data.getChans(): # бежим по списку каналов
-                x = data.getArr('RAD', _chans, _np=True) # получаем  данные
-
-                _y  = np.linspace(self.y_lim[0] + 5, self.y_lim[1] - 5, len(data.getChans()) * 2 - 1) # распределяем зоны в графике
+                _y = np.linspace(self.y_lim[0] + 5, self.y_lim[1] - 5,
+                                 len(data.getChans()) * 2 - 1)  # распределяем зоны в графике
                 _y = _y[::2]
                 _y = _y[_chans]
                 y = np.full([1, len(x)], _y)
 
-
-
                 # --- палитра по каче.... не по количеству
-                #_plot = self.diag.scatter(x, y, c=self .colors_chan[_chans],s=self.mrk_size) # отсроили график
-
+                # _plot = self.diag.scatter(x, y, c=self .colors_chan[_chans],s=self.mrk_size) # отсроили график
 
                 # палитра по количеству
                 self.updateColors(data, _chans)
                 _plot = self.diag.scatter(x, y, c=self.colors, s=self.mrk_size)  # отсроили график
 
-
                 self.diag_plots.append(_plot)
                 # добавлили график
+        elif self.mode == 2:
 
+            sch = -1
 
+            for i in range(len(data.getChans())):
+                if i == self.amp_chan_n:
+                    continue
+                else:
+                    sch = sch + 1
 
-        else: # если отстраиваем амлитуду
-            x = data.getArr('RAD', self.amp_chan_n, _np=True)  # получаем  данные
-            y = data.getArr('AMP', self.amp_chan_n, _np=True)  # получаем  данные
+                    x = data.getDeltaArr('RAD', self.amp_chan_n, i)
 
-            self.updateColors(data, self.amp_chan_n)
-            _plot = self.diag.scatter(x, y, c=self.colors, s=self.mrk_size)  # отсроили график
+                    _y = np.linspace(self.y_lim[0] + 5, self.y_lim[1] - 5,
+                                     len(data.getChans()) * 2 - 1)  # распределяем зоны в графике
+                    _y = _y[::2]
+                    _y = _y[i]
+                    y = np.full([1, len(x)], _y)
 
-            self.diag_plots.append(_plot)
+                    # палитра по количеству
+                    self.updateColorsDelta(x)
 
-            self.diag.set_ylim(np.min(y) - 100, np.max(y) + 100)
+                    _plot = self.diag.scatter(x, y, c=self.colors, s=self.mrk_size)
+                    self.diag_plots.append(_plot)
+        elif self.mode == 3:
+                x = data.getArr('RAD', self.amp_chan_n, _np=True)  # получаем  данные
+                y = data.getArr('AMP', self.amp_chan_n, _np=True)  # получаем  данные
+
+                self.updateColors(data, self.amp_chan_n)
+                _plot = self.diag.scatter(x, y, c=self.colors, s=self.mrk_size)  # отсроили график
+
+                self.diag_plots.append(_plot)
+
+                self.diag.set_ylim(np.min(y) - 100, np.max(y) + 100)
+
 
         self.figure.canvas.draw()
 
