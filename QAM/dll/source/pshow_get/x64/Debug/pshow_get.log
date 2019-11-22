@@ -1,6 +1,0 @@
-﻿  pshow_get.cpp
-e:\work\pcie_sdr\examples\pshow_get\pshow_get.cpp(119): warning C4018: '<': signed/unsigned mismatch
-e:\work\pcie_sdr\examples\pshow_get\pshow_get.cpp(206): warning C4244: '=': conversion from 'volatile uint64_t' to 'uint16_t', possible loss of data
-e:\work\pcie_sdr\examples\pshow_get\pshow_get.cpp(251): warning C4018: '<': signed/unsigned mismatch
-  pshow_get.vcxproj -> E:\work\pcie_sdr\examples\simple_dma\x64\Debug\pshow_get.dll
-  pshow_get.vcxproj -> E:\work\pcie_sdr\examples\simple_dma\x64\Debug\pshow_get.pdb (Full PDB)

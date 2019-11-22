@@ -2315,8 +2315,8 @@ class MW(QtGui.QMainWindow, Ui_MainWindow):
         self.CAL_getFilePushButtonClicked()
         self.PAN_autosearchPushButtonClicked()
 
-        self.EQU_AN_connectPushButtonClicked()
-        self.EQU_GEN_connectPushButtonClicked()
+   #     self.EQU_AN_connectPushButtonClicked()
+#        self.EQU_GEN_connectPushButtonClicked()
 
         # ------ Трей
 

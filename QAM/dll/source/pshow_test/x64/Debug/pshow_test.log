@@ -1,5 +1,0 @@
-﻿  pshow_test.cpp
-e:\work\pcie_sdr\examples\pshow_test\pshow_test.cpp(26): warning C4018: '<': signed/unsigned mismatch
-  LINK : E:\work\pcie_sdr\examples\simple_dma\x64\Debug\pshow_test.exe not found or not built by the last incremental link; performing full link
-  pshow_test.vcxproj -> E:\work\pcie_sdr\examples\simple_dma\x64\Debug\pshow_test.exe
-  pshow_test.vcxproj -> E:\work\pcie_sdr\examples\simple_dma\x64\Debug\pshow_test.pdb (Full PDB)
